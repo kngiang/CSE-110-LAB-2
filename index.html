@@ -56,18 +56,45 @@
    <script>
        document.getElementById("userForm").addEventListener("submit", function (event) {
            event.preventDefault();
+           
+           if (titleCheck() == false) {
+                // Get the input values
+                const title = document.getElementById("title").value;
+                const content = document.getElementById("content").value;
+                const label = document.getElementById("labelType").value;
 
-           // Get the input values
-           const title = document.getElementById("title").value;
-           const content = document.getElementById("content").value;
-           const label = document.getElementById("labelType").value;
+                // Display the result
+                const resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = `<h3>Submitted Information</h3>
+                                        <p>Title: ${title}</p>
+                                        <p>Content: ${content}</p>
+                                        <p>Label: ${label}</p>`;
+           };
+       });
 
-           // Display the result
-           const resultDiv = document.getElementById("result");
-           resultDiv.innerHTML = `<h3>Submitted Information</h3>
-                                  <p>Title: ${title}</p>
-                                  <p>Content: ${content}</p>
-                                  <p>Label: ${label}</p>`;
+       function titleCheck() {
+                if (document.getElementById("title").value.length > 50) {
+                    alert("Title cannot exceed 50 characters.");
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+       document.getElementById("title").addEventListener("focus", function () {
+           this.style.backgroundColor = "#e0f7fa";  // Light blue background on focus
+       });
+
+       document.getElementById("title").addEventListener("blur", function () {
+           this.style.backgroundColor = "";  // Reset background on blur
+       });
+
+       document.getElementById("content").addEventListener("focus", function () {
+           this.style.backgroundColor = "#e0f7fa";  // Light blue background on focus
+       });
+
+       document.getElementById("content").addEventListener("blur", function () {
+           this.style.backgroundColor = "";  // Reset background on blur
        });
    </script>
 </body>
