@@ -2,12 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { ThemeContext, themes } from "./themeContext";
 
 export function ToggleTheme({ toggleTheme, theme }: { toggleTheme: () => void; theme: string }) {
-  const handleClick = () => {
-    toggleTheme();
-    console.log(`Theme changed to: ${theme === "light" ? "dark" : "light"}`);
-  };
   return (
-    <button className="toggleThemeButton" onClick={handleClick}>
+    <button className="toggleThemeButton" onClick={toggleTheme}>
       Toggle Theme
     </button>
   );
